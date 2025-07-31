@@ -4,15 +4,17 @@ This is a Spring core with mongodb practice.
 # Start MongoDB
 ```bash
 docker run -d --name spring-mongodb-p1 \
-           -p 27017:27017 \
+           -p 47019:27017 \
            --env MONGO_INITDB_ROOT_USERNAME=admin \
            --env MONGO_INITDB_ROOT_PASSWORD=secret \
-           --network host \
+           --network bridge \
            mongo:7
 ```
 
 # Start java application
 ```bash
+mvn dependency:purge-local-repository -DreResolve=false
+mvn clean install -DskipTests
 mvn compile exec:java -Dexec.mainClass="edu.man.spring.nosql.MainApplication" -Dexec.cleanupDaemonThreads=false
 ```
 
@@ -57,7 +59,7 @@ root@docker-desktop:/# my-db> db.family.find().forEach ( doc => db.family.update
 root@docker-desktop:/# my-db> db.family.find().forEach(doc => { const qty = randomIntFromInterval(2, 99); db.family.updateOne( { _id: doc._id }, { $set: { "item.qty2": qty } } ); });
 root@docker-desktop:/# my-db> db.family.find({age:{$gte:60}}, {"item.colors":{ $slice: 1}})
 root@docker-desktop:/# my-db> db.version()
-root@docker-desktop:/# my-db> db.family.aggregate([{ $addFields: { gender: { $switch: { branches: [ { case: { $eq: ["$gender", "M"] }, then: "Male" }, { case: { $eq: ["$gender", "F"] }, then: "Female" } ], default: "$gender" } } } }, { $merge: { into: "family" } }]);
+root@docker-desktop:/# my-db> db.family.aggregate([{ $addFields: { genderFull: { $switch: { branches: [ { case: { $eq: ["$gender", "M"] }, then: "Male" }, { case: { $eq: ["$gender", "F"] }, then: "Female" } ], default: "$gender" } } } }, { $merge: { into: "family" } }]);
 root@docker-desktop:/# my-db> 
 root@docker-desktop:/# my-db> 
 root@docker-desktop:/# my-db> 

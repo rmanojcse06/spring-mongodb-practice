@@ -25,7 +25,7 @@ public class MongoConfig {
 
     @Bean
     public MongoClient mongoClient() {
-        String uri = String.format("mongodb://%s:%d", host, port);
+        String uri = String.format("mongodb://%s:%d", mongoHost, mongoPort);
         return MongoClients.create(uri); // Driver 5.x friendly
     }
 

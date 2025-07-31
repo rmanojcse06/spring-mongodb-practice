@@ -11,6 +11,13 @@ docker run -d --name spring-mongodb-p1 \
            mongo:7
 ```
 
+# Start java application
+```bash
+mvn compile exec:java -Dexec.mainClass="edu.man.spring.nosql.MainApplication" -Dexec.cleanupDaemonThreads=false
+```
+
+
+
 # Open MongoDB Shell
 ```bash
 docker exec -it spring-mongodb-p1 bash

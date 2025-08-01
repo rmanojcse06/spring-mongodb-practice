@@ -63,6 +63,11 @@ root@docker-desktop:/# my-db> db.family.aggregate([{ $addFields: { genderFull: {
 root@docker-desktop:/# my-db> 
 root@docker-desktop:/# my-db> 
 root@docker-desktop:/# my-db> 
+root@docker-desktop:/# my-db> db.person.findOneAndDelete({_id: ObjectId('688c7081166e96bad6692aab')})
+root@docker-desktop:/# my-db> 
+root@docker-desktop:/# my-db> 
+root@docker-desktop:/# my-db> 
+root@docker-desktop:/# my-db> 
 root@docker-desktop:/# my-db> 
 root@docker-desktop:/# my-db> 
 ```

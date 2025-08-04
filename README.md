@@ -71,3 +71,12 @@ root@docker-desktop:/# my-db>
 root@docker-desktop:/# my-db> 
 root@docker-desktop:/# my-db> 
 ```
+
+https://www.mongodb.com/docs/manual/tutorial/update-documents-with-aggregation-pipeline/
+$addFields - https://www.mongodb.com/docs/manual/reference/operator/aggregation/addFields/#mongodb-pipeline-pipe.-addFields
+$set - https://www.mongodb.com/docs/manual/reference/operator/aggregation/set/#mongodb-pipeline-pipe.-set
+$project - https://www.mongodb.com/docs/manual/reference/operator/aggregation/project/#mongodb-pipeline-pipe.-project
+$unset - https://www.mongodb.com/docs/manual/reference/operator/aggregation/unset/#mongodb-pipeline-pipe.-unset
+$replaceRoot - https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceRoot/#mongodb-pipeline-pipe.-replaceRoot
+$replaceWith - https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceWith/#mongodb-pipeline-pipe.-replaceWith
+

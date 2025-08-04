@@ -1,24 +1,34 @@
 package edu.man.spring.nosql.models;
 
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.List;
 
-@lombok.Setter
-@lombok.Getter
-@lombok.ToString
-@lombok.AllArgsConstructor
-@lombok.NoArgsConstructor
-@Document("person")
-public class Person {
+@Data
+@Document(collection = "family")
+public class FamilyMember {
     @Id
     private String id;
+
     private String name;
-    private int age;
-    private String email;
+    private String relation;
+    private String gender;
+    private Integer age;
+    private Integer sibling;
+    private Integer children;
+    private Integer score;
+
+    private List<String> colors;
+    private List<Integer> vals;
+
+    private Item item;
+
+    private String genderFull;
     @CreatedDate
     private Date createdDate;
 

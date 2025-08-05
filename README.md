@@ -60,7 +60,7 @@ root@docker-desktop:/# my-db> db.family.find().forEach(doc => { const qty = rand
 root@docker-desktop:/# my-db> db.family.find({age:{$gte:60}}, {"item.colors":{ $slice: 1}})
 root@docker-desktop:/# my-db> db.version()
 root@docker-desktop:/# my-db> db.family.aggregate([{ $addFields: { genderFull: { $switch: { branches: [ { case: { $eq: ["$gender", "M"] }, then: "Male" }, { case: { $eq: ["$gender", "F"] }, then: "Female" } ], default: "$gender" } } } }, { $merge: { into: "family" } }]);
-root@docker-desktop:/# my-db> 
+root@docker-desktop:/# my-db> db.family.aggregate([ { "$unwind": { "path": "$item" } }, { "$match": { "item.qty2": { "$gt": 15 } } }, { "$group": { "_id": "$_id", "item": { "$push": "$item" } } }] )
 root@docker-desktop:/# my-db> 
 root@docker-desktop:/# my-db> 
 root@docker-desktop:/# my-db> db.person.findOneAndDelete({_id: ObjectId('688c7081166e96bad6692aab')})

@@ -38,7 +38,9 @@ public class MainApplication {
 
         personRepository.findAll().forEach(p -> log.info("Person: {}", p));
 
-        familyService.printAverageAgeByGender();
+        familyService.printItemsGt15();
+
+
 
     }
 }

@@ -1,5 +1,6 @@
 package edu.man.spring.nosql.service;
 
+import edu.man.spring.nosql.models.Item;
 import edu.man.spring.nosql.repository.FamilyRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.bson.Document;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Slf4j
@@ -38,5 +41,11 @@ public class FamilyService {
                 Document.class
         );
         result.forEach(f -> log.info("Family : {}", f));
+    }
+    public void printItemsGt15() {
+        log.info("Printing Items with qty > 15 - Aggregation:");
+        familyRepository.itemsGroupedByPerson()
+                .forEach(group -> group.getItem()
+                        .forEach(item -> log.info("Grouped Item: {}", item)));
     }
 }
